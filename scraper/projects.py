@@ -35,9 +35,9 @@ def get_project(soup, side, idx):
             for link in soup.find_all(class_=side)[idx].find_all('a')
         },
         'image_path':
-        soup.find('img').get('src'),
+        soup.find_all(class_=side)[idx].find('img').get('src'),
         'image_alt':
-        soup.find('img').get('alt'),
+        soup.find_all(class_=side)[idx].find('img').get('alt'),
         'tags': [
             tag.text for tag in soup.find_all(
                 class_=side)[idx].find_all('span', class_='tag')
@@ -64,31 +64,6 @@ def get_projects(soup):
             projects.append(proj)
 
 
-    # print(type(projects[0]['title']))
-    # print(type(projects[0]['date']))
-    # print(type(projects[0]['description']))
-    # print(type(projects[0]['links']))
-    # print(type(projects[0]['image_path']))
-    # print(type(projects[0]['image_alt']))
-    # print(type(projects[0]['tags']))
-
-    # json.dump(projects[0], open('projects2.json', 'w'))
-
-
-    # print(
-    #     soup.find_all(class_='project-row-l')[0]
-    #     .find_all(class_='flex-block')[]
-    #.find(class_='flex-item').find(
-    #         class_='info-link').find_all('span')[2].text
-    # )
-
-
-    # print(proj)
-
-    #.find(attrs={"name" : "stainfo"})
-
-
-    # print(projects)
 
     return projects
 
